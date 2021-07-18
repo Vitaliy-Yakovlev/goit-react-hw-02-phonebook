@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import s from './Form.module.css';
 
 class Form extends Component {
   state = {
@@ -28,10 +29,11 @@ class Form extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.heandleSubmit}>
-        <label>
+      <form className={s.form} onSubmit={this.heandleSubmit}>
+        <label className={s.label}>
           Name
           <input
+            className={s.input}
             value={name}
             onChange={this.hadleInputChange}
             type="text"
@@ -40,9 +42,10 @@ class Form extends Component {
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
           />
-          <label>
+          <label className={s.label}>
             Number
             <input
+              className={s.input}
               value={number}
               onChange={this.hadleInputChange}
               type="tel"
@@ -52,7 +55,9 @@ class Form extends Component {
               required
             />
           </label>
-          <button type="submit">Add contact</button>
+          <button className={s.btn} type="submit">
+            Add contact
+          </button>
         </label>
       </form>
     );

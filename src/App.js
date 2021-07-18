@@ -3,6 +3,8 @@ import shortid from 'shortid';
 import Form from './components/Form';
 import Contacts from './components/Contacts';
 import Filter from './components/Filter';
+import Heading from './components/Heading';
+import Container from './components/Container';
 
 class Phponebook extends Component {
   state = {
@@ -64,17 +66,20 @@ class Phponebook extends Component {
 
     return (
       <>
-        <h1>Phonebook</h1>
-        <Form onSubmit={this.addContact} />
+        <Container>
+          <Heading text="Phonebook" />
 
-        <h2>Contacts</h2>
+          <Form onSubmit={this.addContact} />
 
-        <Filter value={filter} onChangeFilter={this.filterChange} />
+          <Heading text="Contacts" />
 
-        <Contacts
-          contacts={this.filterContact()}
-          onClick={this.deleteContact}
-        />
+          <Filter value={filter} onChangeFilter={this.filterChange} />
+
+          <Contacts
+            contacts={this.filterContact()}
+            onClick={this.deleteContact}
+          />
+        </Container>
       </>
     );
   }
