@@ -5,6 +5,8 @@ import Contacts from './components/Contacts';
 import Filter from './components/Filter';
 import Heading from './components/Heading';
 import Container from './components/Container';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Phponebook extends Component {
   state = {
@@ -24,7 +26,8 @@ class Phponebook extends Component {
     );
 
     if (errorName.length) {
-      alert(`${name} is already in contacts`);
+      toast.error(`${name} is already in contacts`);
+      // alert(`${name} is already in contacts`);
     } else {
       this.setState(({ contacts }) => ({
         contacts: [contact, ...contacts],
@@ -65,6 +68,7 @@ class Phponebook extends Component {
           <Heading text="Phonebook" />
 
           <Form onSubmit={this.addContact} />
+          <ToastContainer autoClose={5000} />
 
           <Heading text="Contacts" />
 
